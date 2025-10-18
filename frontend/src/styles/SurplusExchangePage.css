@@ -47,3 +47,42 @@
     font-size: 24px;
     color: var(--dark-green);
 }
+
+/* search results */
+
+.search-results-container {
+    margin-bottom: 50px;
+}
+
+.search-results {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    flex-grow: 1;
+}
+
+@media screen and (width<980px) {
+    .search-results {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+}
+
+@media screen and (width<680px) {
+    .search-results {
+        grid-template-columns: 1fr;
+    }
+}
+
+.search-results-container {
+    display: flex;
+    align-items: center;
+}
+
+.loader {
+    flex-grow: 1;
+    text-align: center;
+    color: var(--dark-green);
+    font-size: 20px;
+    font-weight: 600;
+}

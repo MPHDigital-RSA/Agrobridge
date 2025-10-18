@@ -1,0 +1,26 @@
+.search-form {
+    display: flex;
+    gap: 10px;
+    max-width: 500px;
+    width: 100%;
+    padding-inline: 24px;
+}
+
+.search-form input {
+    border: none;
+    background-color: var(--light-grey);
+    padding: 14px;
+    flex-grow: 1;
+}
+
+.search-form button {
+    border: none;
+    background-color: var(--dark-green);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+    padding: 14px 30px;
+    cursor: pointer;
+}

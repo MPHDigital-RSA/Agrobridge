@@ -1,7 +1,49 @@
+/* Hero */
 .hero {
     background: url(/banner-1.jpg);
     background-position: center;
     background-size: cover;
 
     padding-block: 40px;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 40px;
+    color: var(--white);
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 40px;
+}
+
+@media screen and (width<680px) {
+    .hero-content h1 {
+        font-size: 28px;
+    }
+
+    .hero-content p {
+        line-height: 1.4;
+    }
+}
+
+/* Search */
+
+.search {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-block: 40px;
+    padding-inline: 24;
+    align-items: center;
+    text-align: center;
+}
+
+.heading-2 {
+    font-size: 24px;
+    color: var(--dark-green);
 }

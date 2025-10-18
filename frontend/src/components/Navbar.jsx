@@ -2,10 +2,7 @@ import { useState } from "react";
 import Logo from "../assets/logo.png";
 import '../styles/Navbar.css';
 import { IoIosMenu } from "react-icons/io";
-
 import { IoClose } from "react-icons/io5";
-
-
 
 const Navbar = () => {
 

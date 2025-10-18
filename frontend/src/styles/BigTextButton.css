@@ -1,0 +1,12 @@
+.big-text-button {
+    background-color: var(--dark-green);
+    color: var(--white);
+    text-decoration: none;
+    padding: 20px 50px;
+    display: block;
+    transition: scale 250ms ease-in;
+}
+
+.big-text-button:hover {
+    scale: 1.1;
+}

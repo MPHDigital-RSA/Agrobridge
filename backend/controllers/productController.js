@@ -37,7 +37,36 @@ const { uploadImage} = require("./uploadController");
       });
     }
   };
+// searching product by title
+exports.searchProducts = async (req, res) => {
+  try {
+    const { title } = req.query;
 
+    const page = parseInt(req.query.page) || 1;
+    const limit = 10;
+    const skip = (page - 1) * limit;
 
+    const product = await Product.find({ title: { $regex: title, $options: "i" } })
+      .skip(skip)
+      .limit(limit)
+      .sort({ createdAt: -1 });
 
-
+    if (product.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "No product found with the given title",
+      });
+    }
+    res.status(200).json({
+    success: true,
+    page,
+    totalResults: product.length,
+    data: product,
+});
+  }catch (error) {
+      res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};

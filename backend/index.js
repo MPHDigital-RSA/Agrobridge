@@ -4,7 +4,7 @@ const cors =require('cors');
 
 const {dbConnection}=require('./config/db');
 const productRoutes = require('./routes/productRoutes');
-
+const contactRoute=require('./routes/contactRoutes');
 // Connect to Database
 dbConnection();
 //express app initialization
@@ -22,6 +22,7 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 app.use('/api/products', productRoutes);
+app.use('/api/contact',contactRoute)
 
 app.listen(PORT, () => {
     console.log(`app running on http://localhost: ${PORT}`);

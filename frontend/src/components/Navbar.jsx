@@ -3,6 +3,7 @@ import Logo from "../assets/logo.png";
 import '../styles/Navbar.css';
 import { IoIosMenu } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
 
@@ -20,10 +21,10 @@ const Navbar = () => {
             {/* desktop nav */}
             <nav className="desktop-nav">
                 <ul>
-                    <li><a href="#" className="nav-link">Home</a></li>
-                    <li><a href="#" className="nav-link">Exchange</a></li>
-                    <li><a href="#" className="nav-link">Guide</a></li>
-                    <li><a href="#" className="nav-link">Network</a></li>
+                    <li><Link to="/" className="nav-link">Home</Link></li>
+                    <li><Link to="/exchange" className="nav-link">exchange</Link></li>
+                    <li><Link to="/guide" className="nav-link">guide</Link></li>
+                    <li><Link to="/network" className="nav-link">network</Link></li>
                 </ul>
             </nav>
 
@@ -38,10 +39,10 @@ const Navbar = () => {
                 <nav className="mobile-nav">
                     <ul>
                         <button className="close-btn" onClick={() => setIsMobileMenuOpen(false)}><IoClose /></button>
-                        <li><a href="#" className="nav-link">Home</a></li>
-                        <li><a href="#" className="nav-link">Exchange</a></li>
-                        <li><a href="#" className="nav-link">Guide</a></li>
-                        <li><a href="#" className="nav-link">Network</a></li>
+                        <li><Link to="/" className="nav-link">Home</Link></li>
+                        <li><Link to="/exchange" className="nav-link">exchange</Link></li>
+                        <li><Link to="/guide" className="nav-link">guide</Link></li>
+                        <li><Link to="/network" className="nav-link">network</Link></li>
                     </ul>
                 </nav>
             }

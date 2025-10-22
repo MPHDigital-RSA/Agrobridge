@@ -38,7 +38,7 @@ const SurplusExchangePage = () => {
                     <div className="hero-content">
                         <h1>Food Surplus Exchange</h1>
                         <p>Exchange your surplus fruits and veggies for a different agricultural stock of the same value</p>
-                        <BigTextButton buttonText="Post Your Stock" buttonUrl="#" />
+                        <BigTextButton buttonText="Post Your Stock" buttonUrl="/post" />
                     </div>
                 </div>
             </section>

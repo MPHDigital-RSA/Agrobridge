@@ -20,7 +20,8 @@ app.use(cors({
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
-})
+});
+
 app.use('/api/products', productRoutes);
 app.use('/api/contact', contactRoute)
 

@@ -4,7 +4,7 @@ function App() {
 
   return (
     <>
-      <SurplusExchangePage />
+      <h1>this is the home page</h1>
     </>
   )
 }

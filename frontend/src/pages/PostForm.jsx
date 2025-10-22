@@ -5,18 +5,31 @@ const PostForm = () => {
 
     const [formData, setFormData] = useState({
         title: "",
-        number: 0
+        number: "",
     });
 
     const [title, setTitle] = useState("");
     const [number, setNumber] = useState("");
     const [file, setFile] = useState([]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        console.log(title, number);
-        console.log(file);
+        // update form data
+
+        if (title == "" && number == "") {
+            alert("Add title and number")
+            return
+        }
+
+        else {
+            await setFormData([
+                title,
+                number,
+            ])
+        }
+
+        console.log(formData)
 
         // reset the title input
         setTitle('');
@@ -30,7 +43,7 @@ const PostForm = () => {
                 <div className="form-col">
                     <h2>Post your stock</h2>
 
-                    <form action="" onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit}>
                         <div className="form-group">
                             <input type="text" value={title} placeholder='Enter your title' onChange={(e) => setTitle(e.target.value)} />
                         </div>
@@ -40,7 +53,7 @@ const PostForm = () => {
                         </div>
 
                         <div className="form-group">
-                            <input type="file" value={file} onChange={(e) => setFile(e.target.value)} />
+                            <input type="file" />
                         </div>
 
                         <button>Submit</button>

@@ -23,8 +23,8 @@ const productSchema = new mongoose.Schema(
     
     seller: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      // required: true,
+      ref: "Auth",
+      required: true,
     },
     isAvailable: {
       type: Boolean,

@@ -5,6 +5,7 @@ const cors = require('cors');
 const { dbConnection } = require('./config/db');
 const productRoutes = require('./routes/productRoutes');
 const contactRoute = require('./routes/contactRoutes');
+const authRoute=require('./routes/authRoutes')
 // Connect to Database
 dbConnection();
 //express app initialization
@@ -15,7 +16,8 @@ app.use(express.json({ limit: "300mb" }));
 app.use(express.urlencoded({ extended: true, limit: "300mb" }));
 
 app.use(cors({
-    origin: process.env.CORS_ORIGIN || '*'
+    origin: process.env.CORS_ORIGIN || '*',
+    credentials:true
 }));
 
 app.get('/', (req, res) => {
@@ -23,7 +25,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/products', productRoutes);
-app.use('/api/contact', contactRoute)
+app.use('/api/contact', contactRoute);
+app.use('/api/auth', authRoute);
 
 app.listen(PORT, () => {
     console.log(`app running on http://localhost: ${PORT}`);

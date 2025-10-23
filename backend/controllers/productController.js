@@ -2,7 +2,6 @@
 const Product = require("../models/products");
 const { uploadImage} = require("./uploadController");
 
-
 //  Create new product (seller only)
   exports.createProduct = async (req, res) => {
     try {
@@ -18,7 +17,7 @@ const { uploadImage} = require("./uploadController");
       const productData = {
         ...productPayload,
         images: uploadedFiles,
-        // seller: req.user.id,
+        seller: req.user.id,
       };
 
       const product = new Product(productData);
@@ -37,13 +36,14 @@ const { uploadImage} = require("./uploadController");
       });
     }
   };
+
 // searching product by title
 exports.searchProducts = async (req, res) => {
   try {
     const { title } = req.query;
 
     const page = parseInt(req.query.page) || 1;
-    const limit = 10;
+    const limit = 6;
     const skip = (page - 1) * limit;
 
     const product = await Product.find({ title: { $regex: title, $options: "i" } })

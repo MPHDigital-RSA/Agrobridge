@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../styles/PostForm.css';
+import '../styles/SignInLogInAndPostForm.css';
 import { Link } from 'react-router-dom';
 
 const PostForm = () => {

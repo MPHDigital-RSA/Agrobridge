@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { IoIosEye } from "react-icons/io";
 import { IoIosEyeOff } from "react-icons/io";
-import '../styles/PostForm.css';
+import '../styles/SignInLogInAndPostForm.css';
 
 const LoginPage = () => {
 

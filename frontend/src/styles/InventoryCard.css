@@ -41,7 +41,7 @@
     font-weight: 600;
 }
 
-.card-text button {
+.card-text .button {
     border: none;
     background-color: var(--dark-green);
     color: var(--white);
@@ -53,6 +53,7 @@
     padding: 14px 30px;
     cursor: pointer;
     transition: 250ms ease-in-out;
+    text-decoration: none;
 }
 
 .card-text button:hover {

@@ -5,15 +5,15 @@ import SearchForm from "../components/SearchForm";
 import '../styles/SurplusExchangePage.css';
 import InventoryCard from "../components/InventoryCard";
 
-import { useProducts, useProductsLoadingState, useProductsUpdate, useLoadProducts } from "../store/ProductContext";
+import { useProducts } from "../store/ProductContext";
 import { Link } from "react-router-dom";
 
 const SurplusExchangePage = () => {
 
-    const products = useProducts();
-    const areProductsLoaded = useProductsLoadingState();
-    const updateProducts = useProductsUpdate();
-    const loadProducts = useLoadProducts();
+    const { products, updateProducts, loadProducts, areProductsLoaded, loadSingleProducts } = useProducts();
+    // const areProductsLoaded = useProductsLoadingState();
+    // const updateProducts = useProductsUpdate();
+    // const loadProducts = useLoadProducts();
 
     const [searchedItem, setSearchedItem] = useState('');
 
@@ -62,7 +62,7 @@ const SurplusExchangePage = () => {
 
                     searchedItem == "" ? areProductsLoaded ? <div className="search-results">
                         {
-                            products.map(item => (
+                            products.slice(0, 6).map(item => (
                                 // create a single card and pass the relevant information
                                 <InventoryCard item={item} key={item.id} />
                             ))

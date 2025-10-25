@@ -1,42 +1,35 @@
 import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
+
+//creating a product context
 const ProductContext = React.createContext();
-const ProductUpdateContext = React.createContext();
-const ProductsLoadingStateContext = React.createContext();
-const ProductsLoadingContext = React.createContext();
 
 // creating a custom hook to access the productContext
 export function useProducts() {
     return useContext(ProductContext)
 }
-// load products
-export function useLoadProducts() {
-    return useContext(ProductsLoadingContext)
-}
-// update products
-export function useProductsUpdate() {
-    return useContext(ProductUpdateContext)
-}
-// load products
-export function useProductsLoadingState() {
-    return useContext(ProductsLoadingStateContext)
-}
 
 export function ProductProvider({ children }) {
 
-    // my products data
-    const [products, setProducts] = useState([])
+    // all products state
+    const [products, setProducts] = useState([]);
     const [areProductsLoaded, setAreProductsLoaded] = useState(false);
 
-    // function
+    // single product state
+    const [product, setProduct] = useState([]);
+    const [isProductLoaded, setIsProductLoaded] = useState(false);
+
+    // helper FNs 
+
+    // update single product
     function updateProducts() {
-        console.log("yes the state works")
+        console.log("Product updated")
     }
 
-    // function
+    // function all products
     function loadProducts() {
         // console.log("loading FN")
-        axios.get('/data.json')
+        axios.get('https://fakestoreapi.com/products')
             .then(res => {
                 // console.log(res.data);
                 setProducts(res.data);
@@ -47,15 +40,32 @@ export function ProductProvider({ children }) {
             })
     }
 
+    // load single product
+    function loadSingleProduct(id) {
+        axios.get(`https://fakestoreapi.com/products/${id}`)
+            .then(res => {
+                // console.log(res.data);
+                setProduct(res.data);
+                setIsProductLoaded(true);
+            }).catch(err => {
+                console.log(err);
+                setIsProductLoaded(false);
+            })
+    }
+
+    // delete single product
+    function deleteProduct(id) {
+
+    }
+
+    // create single product
+    function createProduct(product) {
+
+    }
+
     return (
-        <ProductContext.Provider value={products}>
-            <ProductUpdateContext.Provider value={updateProducts}>
-                <ProductsLoadingContext value={loadProducts}>
-                    <ProductsLoadingStateContext value={areProductsLoaded}>
-                        {children}
-                    </ProductsLoadingStateContext>
-                </ProductsLoadingContext>
-            </ProductUpdateContext.Provider>
+        <ProductContext.Provider value={{ products, updateProducts, loadProducts, areProductsLoaded, loadSingleProduct, product, isProductLoaded }}>
+            {children}
         </ProductContext.Provider>
     )
 

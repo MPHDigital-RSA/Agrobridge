@@ -4,6 +4,8 @@ import { IoIosEye } from "react-icons/io";
 import { IoIosEyeOff } from "react-icons/io";
 import '../styles/SignInLogInAndPostForm.css';
 
+import { useLoadUserData, useLoggedStateOfUser } from '../store/UserContext';
+
 const LoginPage = () => {
 
     const [email, setEmail] = useState("");
@@ -11,8 +13,11 @@ const LoginPage = () => {
 
     const [isPwdVisible, setIsPwdVisible] = useState(false);
 
-    const handleSubmit = () => {
+    const user = useLoadUserData();
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(user)
     }
 
     return (

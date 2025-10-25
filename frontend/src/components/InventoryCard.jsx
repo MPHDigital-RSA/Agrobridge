@@ -1,28 +1,29 @@
 import '../styles/InventoryCard.css';
 import { BsCurrencyExchange } from "react-icons/bs";
+import { Link } from 'react-router-dom'
 
 
 const InventoryCard = ({ item }) => {
     return (
         <div className='inventory-card'>
             <div className="card-image">
-                <img src={item.imageUrl} alt="" />
+                <img src={item.image} alt="" />
             </div>
 
             <div className='card-text'>
                 <div className='name-and-quantity'>
-                    <p className="tag">{item.name}</p>
-                    <p className="quantity">{`${item.quantity}Kg`}</p>
+                    <p className="tag">{item.category}</p>
+                    <p className="quantity">{`${item.rating.count}Kg`}</p>
                 </div>
 
                 <p className="posted-by">
-                    by <span>{item.postedBy}</span>
+                    by <span>{"Prince"}</span>
                 </p>
 
-                <button>
+                <Link className='button' to={`/offer/${item.id}`}>
                     <BsCurrencyExchange />
                     Exchange
-                </button>
+                </Link>
             </div>
         </div>
     )

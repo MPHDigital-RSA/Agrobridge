@@ -9,6 +9,23 @@
     display: flex;
     max-width: 600px;
     width: 100%;
+    padding: 0;
+}
+
+.form-back-button {
+    background-color: var(--dark-green);
+    color: var(--white);
+    padding: 10px;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    font-size: 12px;
+    text-decoration: none;
+    transition: 250ms ease-in-out;
+}
+
+.form-back-button:hover {
+    background-color: var(--btn-hover-color);
 }
 
 
@@ -16,26 +33,40 @@
 .image-col {
     max-width: 300px;
     width: 100%;
-    padding: 30px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.318);
 }
 
 .form-col {
     background-color: var(--light-grey);
-    border-radius: 10px 0 0 10px;
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.form-col h2 {
+    color: var(--dark-green);
+    font-size: 22px;
 }
 
 .image-col {
     background-image: url('/banner.jpg');
     background-position: center;
     background-size: cover;
-    border-radius: 0 10px 10px 0;
-    /* height: 100%; */
+    flex-grow: 1;
+}
+
+.already-has-account {
+    font-size: 14px;
+    margin-top: 14px;
+}
+
+.form-link {
+    color: var(--light-green);
 }
 
 @media screen and (width<680px) {
     .form-container .container {
         flex-direction: column;
+        flex-direction: column-reverse;
+        padding: 24px;
     }
 
     .form-col,
@@ -43,13 +74,13 @@
         max-width: unset;
     }
 
-    .form-col {
-        border-radius: 10px 10px 0 0;
+    .image-col {
+        min-height: 150px;
     }
 
-    .image-col {
-        border-radius: 0 0 10px 10px;
-        min-height: 150px;
+    .form-back-button {
+        left: 24px;
+        top: 24px;
     }
 }
 
@@ -58,12 +89,12 @@
 }
 
 input[type=text],
-input[type=number] {
+input[type=number],
+input[type=password] {
     border: none;
     width: 100%;
     padding: 10px;
-
-
+    outline: none;
 }
 
 form button {
@@ -74,8 +105,34 @@ form button {
     width: 100%;
     padding: 14px;
     cursor: pointer;
+    transition: 250ms ease-in-out;
+}
+
+form button:hover {
+    background-color: var(--btn-hover-color);
+
 }
 
 .form-col h2 {
     margin-bottom: 30px;
+}
+
+.form-group.password {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-group.password button {
+    padding: unset;
+    background-color: var(--white);
+    color: var(--dark-green);
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 10px;
+    font-size: 16px;
+    height: 40px;
+    margin: 0;
 }

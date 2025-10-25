@@ -21,6 +21,26 @@
     font-size: 40px;
 }
 
+.login-signup {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-button {
+    background-color: var(--dark-green);
+    color: var(--white);
+    padding: 10px;
+    font-size: 12px;
+    text-decoration: none;
+    transition: 250ms ease-in-out;
+}
+
+.nav-button:hover {
+    background-color: var(--btn-hover-color);
+}
+
 @media screen and (width<680px) {
     .hero-content h1 {
         font-size: 28px;

@@ -52,7 +52,7 @@ exports.signInUser = async (req, res) => {
     );
     res.status(201).json({
       success: true,
-      message: 'User registered successfully',
+      message: 'User logged successfully',
       token: authToken,
       user: { id: user._id, username: user.username, email: user.email }
     });

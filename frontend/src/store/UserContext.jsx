@@ -2,20 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { setItem } from "../utilities/sessionStorage";
 
+// create the user context.
 const UserContext = React.createContext();
-// const UserLoggedStateContext = React.createContext();
 
 // create custom Hooks
-
 // load user
 export function useUserData() {
     return useContext(UserContext);
 }
-
-// load user
-// export function useLoggedStateOfUser() {
-//     return useContext(UserLoggedStateContext);
-// }
 
 export function UserProvider({ children }) {
 
@@ -77,19 +71,18 @@ export function UserProvider({ children }) {
                 console.log(res.data.message)
 
             }).catch(err => {
-                console.log(err);
+                console.log(err.response.data);
                 setIsUserLogged(false);
             })
-
     }
 
-    // login existing user
+    // login out the user
     function logingOut() {
-
+        // log the user out when a logout button is clicked!
     }
 
     return (
-        <UserContext.Provider value={{ userData, isUserLogged, loadUserinfo, createUser, logingIn }}>
+        <UserContext.Provider value={{ userData, isUserLogged, loadUserinfo, createUser, logingIn, logingOut }}>
             {children}
         </UserContext.Provider>
     )

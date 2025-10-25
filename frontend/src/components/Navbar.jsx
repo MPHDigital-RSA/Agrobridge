@@ -19,22 +19,22 @@ const Navbar = () => {
             </a>
 
             {/* desktop nav */}
-            <nav className="desktop-nav">
+            {/* <nav className="desktop-nav">
                 <ul>
                     <li><Link to="/" className="nav-link">Home</Link></li>
                     <li><Link to="/exchange" className="nav-link">exchange</Link></li>
                     <li><Link to="/guide" className="nav-link">guide</Link></li>
                     <li><Link to="/network" className="nav-link">network</Link></li>
                 </ul>
-            </nav>
+            </nav> */}
 
             {/* hamburger menu */}
-            <button className="hamburger" onClick={() => setIsMobileMenuOpen(true)}>
+            {/* <button className="hamburger" onClick={() => setIsMobileMenuOpen(true)}>
                 <IoIosMenu />
-            </button>
+            </button> */}
 
             {/* mobile menu */}
-            {
+            {/* {
                 isMobileMenuOpen &&
                 <nav className="mobile-nav">
                     <ul>
@@ -45,7 +45,7 @@ const Navbar = () => {
                         <li><Link to="/network" className="nav-link">network</Link></li>
                     </ul>
                 </nav>
-            }
+            } */}
 
         </div>
     )

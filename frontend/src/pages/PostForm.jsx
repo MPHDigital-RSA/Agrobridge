@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import '../styles/PostForm.css'
+import React, { useState } from 'react';
+import '../styles/SignInLogInAndPostForm.css';
+import { Link } from 'react-router-dom';
 
 const PostForm = () => {
 
@@ -39,6 +40,9 @@ const PostForm = () => {
 
     return (
         <div className='form-container'>
+            <Link to='/exchange' className='form-back-button'>
+                Back to Exchange
+            </Link>
             <div className="container">
                 <div className="form-col">
                     <h2>Post your stock</h2>

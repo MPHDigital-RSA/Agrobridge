@@ -2,32 +2,32 @@ import { useEffect, useState } from "react";
 import BigTextButton from "../components/BigTextButton";
 import Navbar from "../components/Navbar";
 import SearchForm from "../components/SearchForm";
-import '../styles/SurplusExchangePage.css'
-import axios from "axios";
+import '../styles/SurplusExchangePage.css';
 import InventoryCard from "../components/InventoryCard";
+
+import { useProducts, useProductsLoadingState, useProductsUpdate, useLoadProducts } from "../store/ProductContext";
+import { Link } from "react-router-dom";
 
 const SurplusExchangePage = () => {
 
-    const [data, setData] = useState([]);
-    const [isDataLoaded, setIsDataLoaded] = useState(false);
+    const products = useProducts();
+    const areProductsLoaded = useProductsLoadingState();
+    const updateProducts = useProductsUpdate();
+    const loadProducts = useLoadProducts();
 
+    const [searchedItem, setSearchedItem] = useState('');
 
     useEffect(() => {
+        loadProducts();
+    }, [searchedItem]);
 
-        // remove this code later after using a statemanagement solution to fetch data from an API (Zustand)
-        console.log("page loaded");
+    function filterProducts() {
+        const filteredProducts = [];
 
-        axios.get('/public/data.json')
-            .then(res => {
-                // console.log(res.data);
-                setData(res.data);
-                setIsDataLoaded(true);
-            }).catch(err => {
-                console.log(err);
-                setIsDataLoaded(false);
-            })
-
-    }, [])
+        products.forEach(product => {
+            product.name.filter()
+        });
+    }
 
     return (
         <>
@@ -35,31 +35,43 @@ const SurplusExchangePage = () => {
                 <div className="container">
                     <Navbar />
 
+                    <div className="login-signup">
+                        <Link to="/login" className="nav-button">Log In</Link>
+                        <Link to="/signup" className="nav-button">Sign Up</Link>
+                    </div>
+
                     <div className="hero-content">
                         <h1>Food Surplus Exchange</h1>
                         <p>Exchange your surplus fruits and veggies for a different agricultural stock of the same value</p>
                         <BigTextButton buttonText="Post Your Stock" buttonUrl="/post" />
+
+                        {/* <button onClick={updateProducts}>State Management Test</button> */}
                     </div>
                 </div>
             </section>
 
             <section className="search">
                 <h2 className="heading-2">Find Your Agric needs.</h2>
-                <SearchForm />
+                <SearchForm searchedItem={searchedItem} setSearchedItem={setSearchedItem} />
             </section>
 
             <section className="container search-results-container">
                 {/* render cards max of 6 desktop and 3 mobile */}
 
                 {
-                    isDataLoaded ? <div className="search-results">
+
+                    searchedItem == "" ? areProductsLoaded ? <div className="search-results">
                         {
-                            data.map(item => (
+                            products.map(item => (
                                 // create a single card and pass the relevant information
                                 <InventoryCard item={item} key={item.id} />
                             ))
                         }
                     </div> : <p className="loader">Loading...</p>
+
+                        : areProductsLoaded ? <div>
+                            Searching
+                        </div> : <p className="loader">Loading...</p>
                 }
 
             </section>

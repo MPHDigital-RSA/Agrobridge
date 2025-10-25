@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IoIosEye } from "react-icons/io";
 import { IoIosEyeOff } from "react-icons/io";
 import '../styles/SignInLogInAndPostForm.css';
@@ -8,6 +8,9 @@ import { useUserData } from '../store/UserContext';
 
 const LoginPage = () => {
 
+    const navigate = useNavigate();
+
+    // is password visible or not
     const [isPwdVisible, setIsPwdVisible] = useState(false);
 
     // retrieve data from the store
@@ -35,6 +38,8 @@ const LoginPage = () => {
             // do a post request here
             // call create products and pass in form values
             logingIn(formValues);
+            // navigate
+            navigate("/");
         }
 
     }

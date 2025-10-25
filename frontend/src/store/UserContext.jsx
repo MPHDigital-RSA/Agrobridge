@@ -41,7 +41,7 @@ export function UserProvider({ children }) {
 
     // create new user
     function createUser(user) {
-        axios.post('http://localhost:4000/api/auth/signup', user)
+        axios.post('https://agrobridge-backend.vercel.app/api/auth/signup', user)
             .then(res => {
                 // console.log(res.data);
                 setNewUser(res.data.user);
@@ -60,7 +60,7 @@ export function UserProvider({ children }) {
 
     // login existing user
     function logingIn(user) {
-        axios.post('http://localhost:4000/api/auth/login', user)
+        axios.post('https://agrobridge-backend.vercel.app/api/auth/login', user)
             .then(res => {
                 // console.log(res.data);
                 setNewUser(res.data.user);
@@ -68,10 +68,10 @@ export function UserProvider({ children }) {
                 setIsUserLogged(true);
 
                 setItem("token", res.data.token);
-                console.log(res.data.message)
+                console.log(res.data.message);
 
             }).catch(err => {
-                console.log(err.response.data);
+                console.log(err);
                 setIsUserLogged(false);
             })
     }

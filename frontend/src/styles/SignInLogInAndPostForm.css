@@ -90,11 +90,16 @@
 
 input[type=text],
 input[type=number],
-input[type=password] {
+input[type=password],
+input[type=file] {
     border: none;
     width: 100%;
     padding: 10px;
     outline: none;
+}
+
+input[type=file] {
+    padding: 0;
 }
 
 form button {
@@ -110,7 +115,6 @@ form button {
 
 form button:hover {
     background-color: var(--btn-hover-color);
-
 }
 
 .form-col h2 {

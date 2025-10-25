@@ -7,7 +7,7 @@ import { ProductProvider } from './store/ProductContext.jsx';
 // pages
 import App from './App.jsx'
 import SurplusExchangePage from './pages/SurplusExchangePage.jsx';
-import PostForm from './pages/PostForm.jsx';
+import PostProductPage from './pages/PostProductPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import SignUpPage from './pages/SignUpPage.jsx';
 import OfferPage from './pages/OfferPage.jsx';
@@ -15,7 +15,7 @@ import { UserProvider } from './store/UserContext.jsx';
 
 const router = createBrowserRouter([
   { path: '/', element: <App /> },
-  { path: '/post', element: <PostForm /> },
+  { path: '/post', element: <PostProductPage /> },
   { path: '/exchange', element: <SurplusExchangePage /> },
   { path: '/login', element: <LoginPage /> },
   { path: '/signup', element: <SignUpPage /> },

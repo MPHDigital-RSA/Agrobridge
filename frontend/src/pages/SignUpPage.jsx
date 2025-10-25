@@ -4,16 +4,38 @@ import { IoIosEye } from "react-icons/io";
 import { IoIosEyeOff } from "react-icons/io";
 import '../styles/SignInLogInAndPostForm.css';
 
-const SignUpPage = () => {
+import { useUserData } from '../store/UserContext';
 
-    const [username, setUsername] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+const SignUpPage = () => {
 
     const [isPwdVisible, setIsPwdVisible] = useState(false);
 
-    const handleSubmit = () => {
+    // retrieve data from the store
+    const { createUser } = useUserData();
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+        const formValues = Object.fromEntries(formData);
+
+        // validation
+
+        if (formData.get('email') == "" && formData.get('password') == "") {
+            alert("Enter email and password")
+            return
+        } else if (formData.get('email') == "" && formData.get('password')) {
+            alert("Enter email")
+            return
+        } else if (formData.get('email') && formData.get('password') == "") {
+            alert("Enter password")
+            return
+        }
+        else {
+            // do a post request here
+            // call create products and pass in form values
+            createUser(formValues);
+        }
     }
 
     return (
@@ -28,16 +50,17 @@ const SignUpPage = () => {
                     <h2>Sign Up</h2>
 
                     <form onSubmit={handleSubmit}>
+
                         <div className="form-group">
-                            <input type="text" value={username} placeholder='Username' onChange={(e) => setUsername(e.target.value)} />
+                            <input type="text" name='username' placeholder='Username' />
                         </div>
 
                         <div className="form-group">
-                            <input type="text" value={email} placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
+                            <input type="text" name='email' placeholder='Email' />
                         </div>
 
                         <div className="form-group password">
-                            <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                            <input type="password" placeholder='Password' name='password' />
 
                             {
                                 isPwdVisible ? <button onClick={(e) => { e.preventDefault(); setIsPwdVisible(!isPwdVisible) }}><IoIosEyeOff /></button> : <button onClick={(e) => { e.preventDefault(); setIsPwdVisible(!isPwdVisible) }}><IoIosEye /></button>

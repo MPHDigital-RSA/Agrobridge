@@ -17,9 +17,9 @@ const OfferPage = () => {
     }, [])
 
     return (
-        <div>
-            {product.title}
-        </div>
+        <section className=''>
+            <img src={product.image} alt="" />
+        </section>
     )
 }
 

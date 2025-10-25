@@ -43,7 +43,7 @@ const SurplusExchangePage = () => {
                     <div className="hero-content">
                         <h1>Food Surplus Exchange</h1>
                         <p>Exchange your surplus fruits and veggies for a different agricultural stock of the same value</p>
-                        <BigTextButton buttonText="Post Your Stock" buttonUrl="/post" />
+                        <BigTextButton buttonText="Post Your Product" buttonUrl="/post" />
 
                         {/* <button onClick={updateProducts}>State Management Test</button> */}
                     </div>
@@ -62,7 +62,7 @@ const SurplusExchangePage = () => {
 
                     searchedItem == "" ? areProductsLoaded ? <div className="search-results">
                         {
-                            products.slice(0, 6).map(item => (
+                            products.map(item => (
                                 // create a single card and pass the relevant information
                                 <InventoryCard item={item} key={item.id} />
                             ))

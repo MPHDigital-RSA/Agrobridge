@@ -4,20 +4,39 @@ import { IoIosEye } from "react-icons/io";
 import { IoIosEyeOff } from "react-icons/io";
 import '../styles/SignInLogInAndPostForm.css';
 
-import { useLoadUserData, useLoggedStateOfUser } from '../store/UserContext';
+import { useUserData } from '../store/UserContext';
 
 const LoginPage = () => {
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
     const [isPwdVisible, setIsPwdVisible] = useState(false);
 
-    const user = useLoadUserData();
+    // retrieve data from the store
+    const { logingIn } = useUserData();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(user)
+
+        const formData = new FormData(e.target);
+        const formValues = Object.fromEntries(formData);
+
+        // validation
+
+        if (formData.get('email') == "" && formData.get('password') == "") {
+            alert("Enter email and password")
+            return
+        } else if (formData.get('email') == "" && formData.get('password')) {
+            alert("Enter email")
+            return
+        } else if (formData.get('email') && formData.get('password') == "") {
+            alert("Enter password")
+            return
+        }
+        else {
+            // do a post request here
+            // call create products and pass in form values
+            logingIn(formValues);
+        }
+
     }
 
     return (
@@ -33,11 +52,11 @@ const LoginPage = () => {
 
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
-                            <input type="text" value={email} placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
+                            <input type="text" name='email' placeholder='Email' />
                         </div>
 
                         <div className="form-group password">
-                            <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                            <input type="password" placeholder='Password' name='password' />
 
                             {
                                 isPwdVisible ? <button onClick={(e) => { e.preventDefault(); setIsPwdVisible(!isPwdVisible) }}><IoIosEyeOff /></button> : <button onClick={(e) => { e.preventDefault(); setIsPwdVisible(!isPwdVisible) }}><IoIosEye /></button>

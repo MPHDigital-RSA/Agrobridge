@@ -68,7 +68,8 @@ export function ProductProvider({ children }) {
 
     // create single product
     function createProduct(product) {
-
+        // successfully recieving the form values here...
+        console.log(product)
     }
 
     return (

@@ -5,7 +5,7 @@ const cors = require('cors');
 const { dbConnection } = require('./config/db');
 const productRoutes = require('./routes/productRoutes');
 const contactRoute = require('./routes/contactRoutes');
-const authRoute=require('./routes/authRoutes')
+const authRoute = require('./routes/authRoutes')
 // Connect to Database
 dbConnection();
 //express app initialization
@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true, limit: "300mb" }));
 
 app.use(cors({
     origin: process.env.CORS_ORIGIN || '*',
-    credentials:true
+    credentials: true
 }));
 
 app.get('/', (req, res) => {

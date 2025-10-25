@@ -55,7 +55,15 @@ export function ProductProvider({ children }) {
 
     // delete single product
     function deleteProduct(id) {
-
+        axios.get(`https://fakestoreapi.com/products${id}`)
+            .then(res => {
+                // console.log(res.data);
+                setProducts(res.data);
+                setAreProductsLoaded(true);
+            }).catch(err => {
+                console.log(err);
+                setAreProductsLoaded(false);
+            })
     }
 
     // create single product
@@ -64,7 +72,7 @@ export function ProductProvider({ children }) {
     }
 
     return (
-        <ProductContext.Provider value={{ products, updateProducts, loadProducts, areProductsLoaded, loadSingleProduct, product, isProductLoaded }}>
+        <ProductContext.Provider value={{ products, updateProducts, loadProducts, areProductsLoaded, loadSingleProduct, product, isProductLoaded, createProduct, deleteProduct }}>
             {children}
         </ProductContext.Provider>
     )

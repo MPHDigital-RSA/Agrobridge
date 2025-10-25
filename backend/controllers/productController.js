@@ -39,5 +39,36 @@ const { uploadImage} = require("./uploadController");
   };
 
 
+  /////UPDATE PRODUCT////
+  exports.updateProduct = async (req, res) => {
+    try {
+      const {id} = req.params;
+      const updates = req.body;
+
+      //find and update the product//
+      const updatedProduct = await Product.findByIdAndUpdate(id, updates, {new:true});
+
+      if(!updatedProduct) {
+        return res.status(404).json({
+          success: false,
+          message: "Product not available",
+        });
+      }
+
+      res.status(200).json({
+        success: true,
+        message: "Product successfully updated",
+        data: updatedProduct,
+      });
+    } catch (error) {
+      res.status(400).json ({
+        success: false,
+        message: "Error while updating product",
+        error: error.message,
+      });
+    }
+  };
+
+
 
 

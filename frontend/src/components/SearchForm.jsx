@@ -3,7 +3,7 @@ import '../styles/SearchForm.css';
 import { useState } from "react";
 
 const SearchForm = ({ searchedItem, setSearchedItem }) => {
-    console.log(searchedItem)
+    // console.log(searchedItem)
     const handleSubmit = () => {
         alert(inputText)
     }

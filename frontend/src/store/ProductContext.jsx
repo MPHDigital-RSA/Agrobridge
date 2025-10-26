@@ -29,10 +29,10 @@ export function ProductProvider({ children }) {
     // function all products
     function loadProducts() {
         // console.log("loading FN")
-        axios.get('https://fakestoreapi.com/products')
+        axios.get('https://agrobridge-backend.vercel.app/api/products/')
             .then(res => {
-                // console.log(res.data);
-                setProducts(res.data);
+                console.log(res.data.data);
+                setProducts(res.data.data);
                 setAreProductsLoaded(true);
             }).catch(err => {
                 console.log(err);

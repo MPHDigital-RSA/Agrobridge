@@ -13,7 +13,7 @@ const PostForm = () => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const formValues = Object.fromEntries(formData);
-        // formValues.push({ "image": image });
+        // console.log(formValues);
 
         // update form data
 
@@ -54,7 +54,7 @@ const PostForm = () => {
                         </div>
 
                         <div className="form-group">
-                            <input type="file" name='image' />
+                            <input type="file" name='images' />
                         </div>
 
                         <button type='submit'>Submit</button>

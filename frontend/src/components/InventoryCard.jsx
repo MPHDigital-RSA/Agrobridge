@@ -11,20 +11,20 @@ const InventoryCard = ({ item }) => {
 
         <div className='inventory-card'>
             <div className="card-image">
-                <img src={item.image} alt="" />
+                <img src={item.images} alt="" />
             </div>
 
             <div className='card-text'>
                 <div className='name-and-quantity'>
-                    <p className="tag">{item.category}</p>
-                    <p className="quantity">{`${item.rating.count}Kg`}</p>
+                    <p className="tag">{item.title}</p>
+                    <p className="quantity">{`${item.weight}Kg`}</p>
                 </div>
 
                 <p className="posted-by">
-                    by <span>{"Prince"}</span>
+                    by <span>{item.user}</span>
                 </p>
 
-                <Link className='button' to={isUserLogged() ? `/offer/${item.id}` : `/`}>
+                <Link className='button' to={isUserLogged() ? `/offer/${item._id}` : `/`}>
                     <BsCurrencyExchange />
                     Exchange
                 </Link>

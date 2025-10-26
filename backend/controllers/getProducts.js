@@ -7,7 +7,7 @@ exports.getProducts = async (req, res) => {
     const products = await Product.find();
     res.status(200).json({
       success: true,
-      message: "Product successsfully retrieved",
+      message: "Products successsfully retrieved",
       data: products,
     });
   } catch (error) {

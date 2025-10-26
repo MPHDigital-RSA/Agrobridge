@@ -14,6 +14,7 @@ import { useUserData } from "../store/UserContext";
 
 const SurplusExchangePage = () => {
 
+    const [isDataLoaded, setIsDataLoaded] = useState(false);
     const navigate = useNavigate();
 
     const { products, updateProducts, loadProducts, areProductsLoaded, loadSingleProducts } = useProducts();
@@ -22,6 +23,7 @@ const SurplusExchangePage = () => {
 
     useEffect(() => {
         loadProducts();
+        console.log(products);
     }, [searchedItem]);
 
     function filterProducts() {
@@ -31,8 +33,6 @@ const SurplusExchangePage = () => {
             product.name.filter()
         });
     }
-
-
 
     return (
         <>
@@ -76,7 +76,7 @@ const SurplusExchangePage = () => {
                         {
                             products.map(item => (
                                 // create a single card and pass the relevant information
-                                <InventoryCard item={item} key={item.id} />
+                                <InventoryCard item={item} key={item._id} />
                             ))
                         }
                     </div> : <p className="loader">Loading...</p>

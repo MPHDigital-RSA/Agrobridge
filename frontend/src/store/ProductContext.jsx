@@ -70,6 +70,16 @@ export function ProductProvider({ children }) {
     function createProduct(product) {
         // successfully recieving the form values here...
         console.log(product)
+
+        axios.post(`https://agrobridge-backend.vercel.app/api/products/`, product)
+            .then(res => {
+                console.log(res.data);
+                setProduct(res.data);
+                setIsProductLoaded(true);
+            }).catch(err => {
+                console.log(err);
+                setIsProductLoaded(false);
+            })
     }
 
     return (

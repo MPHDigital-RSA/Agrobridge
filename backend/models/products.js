@@ -5,12 +5,12 @@ const productSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required:true,
+      required: true,
       trim: true,
     },
     weight: {
-      type: Number,
-      required:true,
+      type: String,
+      required: true,
     },
     // category: {
     //   type: String,
@@ -20,7 +20,7 @@ const productSchema = new mongoose.Schema(
       type: Array,
       of: String
     },
-    
+
     seller: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Auth",
@@ -29,8 +29,8 @@ const productSchema = new mongoose.Schema(
     isAvailable: {
       type: Boolean,
       default: true,
+    },
   },
-},
   {
     timestamps: true,
   }

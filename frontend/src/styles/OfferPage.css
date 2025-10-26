@@ -1,0 +1,73 @@
+.offer-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    padding-inline: 24px;
+}
+
+.customer-profile {
+    max-width: 600px;
+    background-color: var(--light-grey);
+    width: 100%;
+    padding: 20px;
+}
+
+.customer-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--white);
+    display: grid;
+    place-content: center;
+}
+
+.offer-page .form-container {
+    height: unset;
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.offer-page .form-container .image-col {
+    height: 150px;
+    /* background-image: unset; */
+}
+
+.form-container .image-col img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.form-container>* {
+    flex-grow: 1;
+    width: inherit;
+    max-width: 600px;
+}
+
+.offer-page .buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.offer-page .form-back-button {
+    border: none;
+    position: relative;
+}
+
+@media screen and (width<980px) {
+    .offer-page .buttons {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: fit-content;
+    }
+
+    .offer-page {
+        align-items: left;
+    }
+}

@@ -6,15 +6,18 @@ import '../styles/SurplusExchangePage.css';
 import InventoryCard from "../components/InventoryCard";
 
 import { useProducts } from "../store/ProductContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+// function to check if user is logged
+import { isUserLogged } from "../utilities/sessionStorage";
+import { useUserData } from "../store/UserContext";
 
 const SurplusExchangePage = () => {
 
-    const { products, updateProducts, loadProducts, areProductsLoaded, loadSingleProducts } = useProducts();
-    // const areProductsLoaded = useProductsLoadingState();
-    // const updateProducts = useProductsUpdate();
-    // const loadProducts = useLoadProducts();
+    const navigate = useNavigate();
 
+    const { products, updateProducts, loadProducts, areProductsLoaded, loadSingleProducts } = useProducts();
+    const { logingOut, userData, message } = useUserData();
     const [searchedItem, setSearchedItem] = useState('');
 
     useEffect(() => {
@@ -29,23 +32,32 @@ const SurplusExchangePage = () => {
         });
     }
 
+
+
     return (
         <>
             <section className="hero">
                 <div className="container">
                     <Navbar />
 
-                    <div className="login-signup">
-                        <Link to="/login" className="nav-button">Log In</Link>
-                        <Link to="/signup" className="nav-button">Sign Up</Link>
-                    </div>
+
+                    {
+                        isUserLogged() ?
+                            <div>
+                                <p style={{ color: "red", textAlign: "center" }}>profile</p>
+                            </div> : <div className="login-signup">
+                                <Link to="/login" className="nav-button">Log In</Link>
+                                <Link to="/signup" className="nav-button">Sign Up</Link>
+                            </div>
+                    }
+
 
                     <div className="hero-content">
                         <h1>Food Surplus Exchange</h1>
                         <p>Exchange your surplus fruits and veggies for a different agricultural stock of the same value</p>
                         <BigTextButton buttonText="Post Your Product" buttonUrl="/post" />
 
-                        {/* <button onClick={updateProducts}>State Management Test</button> */}
+                        <button onClick={() => { logingOut(), navigate("/") }}>LogOut</button>
                     </div>
                 </div>
             </section>

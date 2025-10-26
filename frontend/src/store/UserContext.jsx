@@ -1,27 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { setItem } from "../utilities/sessionStorage";
+import { setItem, removeItem } from "../utilities/sessionStorage";
 
 // create the user context.
 const UserContext = React.createContext();
 
 // create custom Hooks
-// load user
 export function useUserData() {
     return useContext(UserContext);
 }
 
 export function UserProvider({ children }) {
 
-    // user logged state
-    const [isUserLogged, setIsUserLogged] = useState(false);
-
-    const [newUser, setNewUser] = useState({});
+    // message from backend
     const [message, setMessage] = useState("");
-
-    // user Info
+    // user data
     const [userData, setUserData] = useState([]);
-
     // load user information
     function loadUserinfo() {
         // call the API and find the user info
@@ -44,16 +38,15 @@ export function UserProvider({ children }) {
         axios.post('https://agrobridge-backend.vercel.app/api/auth/signup', user)
             .then(res => {
                 // console.log(res.data);
-                setNewUser(res.data.user);
+                setUserData(res.data.user);
                 setMessage(res.data.message);
-                setIsUserLogged(true);
 
                 setItem("token", res.data.token);
-                console.log(res.data.message)
+                console.log(res.data.message);
 
             }).catch(err => {
                 console.log(err);
-                setIsUserLogged(false);
+                setMessage(err.response.data.message);
             })
 
     }
@@ -62,27 +55,26 @@ export function UserProvider({ children }) {
     function logingIn(user) {
         axios.post('https://agrobridge-backend.vercel.app/api/auth/login', user)
             .then(res => {
-                // console.log(res.data);
-                setNewUser(res.data.user);
+                setUserData(res.data.user);
                 setMessage(res.data.message);
-                setIsUserLogged(true);
 
                 setItem("token", res.data.token);
                 console.log(res.data.message);
 
             }).catch(err => {
-                console.log(err);
-                setIsUserLogged(false);
+                console.log(err)
+                setMessage(err.response.data.message);
             })
     }
 
     // login out the user
     function logingOut() {
         // log the user out when a logout button is clicked!
+        removeItem("token");
     }
 
     return (
-        <UserContext.Provider value={{ userData, isUserLogged, loadUserinfo, createUser, logingIn, logingOut }}>
+        <UserContext.Provider value={{ userData, createUser, logingIn, logingOut, message }}>
             {children}
         </UserContext.Provider>
     )

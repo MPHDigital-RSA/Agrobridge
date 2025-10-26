@@ -26,3 +26,15 @@ export function removeItem(key) {
         console.log(err);
     }
 }
+
+export function isUserLogged() {
+
+    // if there is a token in the local storage the user is logged otherwise its not
+
+    if (getItem("token")) {
+        return true
+    } else {
+        return false
+    }
+
+}

@@ -6,7 +6,7 @@ const { uploadImage } = require("./uploadController");
 exports.createProduct = async (req, res) => {
   try {
     const { images, ...productPayload } = req.body;
-    const uploadedFiles = {};
+    const uploadedFiles = [];
 
     if (images) {
       for (const file of images) {

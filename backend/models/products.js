@@ -9,7 +9,7 @@ const productSchema = new mongoose.Schema(
       trim: true,
     },
     weight: {
-      type: String,
+      type: Number,
       required: true,
     },
     // category: {
@@ -17,7 +17,7 @@ const productSchema = new mongoose.Schema(
     //   required: true,
     // },
     images: {
-      type: Object,
+      type: Array,
       of: String
     },
 

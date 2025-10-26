@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
+import { getItem } from "../utilities/sessionStorage";
 
 //creating a product context
 const ProductContext = React.createContext();
@@ -71,7 +72,15 @@ export function ProductProvider({ children }) {
         // successfully recieving the form values here...
         console.log(product)
 
-        axios.post(`https://agrobridge-backend.vercel.app/api/products/`, product)
+        const token = getItem("token");
+
+        axios.post(`https://agrobridge-backend.vercel.app/api/products/`, {
+            data: product
+        }, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
             .then(res => {
                 console.log(res.data);
                 setProduct(res.data);

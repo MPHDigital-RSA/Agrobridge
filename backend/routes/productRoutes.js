@@ -1,7 +1,7 @@
-const express=require('express');
-const router=express.Router();
-const {createProduct,searchProducts}=require('../controllers/productController');
-const {authenticate}=require('../middleware/authMiddleware')
+const express = require('express');
+const router = express.Router();
+const { createProduct, searchProducts, getProducts } = require('../controllers/productController');
+const { authenticate } = require('../middleware/authMiddleware')
 
 router.post('/', authenticate, createProduct);
 // router.get('/', getProducts);

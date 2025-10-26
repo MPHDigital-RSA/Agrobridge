@@ -6,6 +6,7 @@
     flex-direction: column;
     gap: 10px;
     padding-inline: 24px;
+    padding-block: 40px;
 }
 
 .customer-profile {
@@ -52,11 +53,15 @@
 .offer-page .buttons {
     display: flex;
     gap: 10px;
+    position: relative;
 }
 
 .offer-page .form-back-button {
     border: none;
+    cursor: pointer;
     position: relative;
+    top: 0;
+    left: 0;
 }
 
 @media screen and (width<980px) {

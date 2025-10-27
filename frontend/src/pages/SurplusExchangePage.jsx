@@ -87,7 +87,7 @@ const SurplusExchangePage = () => {
 
             </section>
 
-            <Footer />
+            {/* <Footer /> */}
         </>
     )
 }

@@ -71,10 +71,10 @@ const OfferPage = () => {
         <section className='offer-page'>
 
             <div className="buttons">
-                <Link to='/exchange' className='form-back-button'>
+                <Link to='/' className='form-back-button'>
                     Back to Exchange
                 </Link>
-                <button to='/exchange' className='form-back-button' onClick={() => { logingOut(); navigate("/") }}>
+                <button className='form-back-button' onClick={() => { logingOut(); navigate("/") }}>
                     Log Out
                 </button>
             </div>

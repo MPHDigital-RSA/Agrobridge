@@ -23,7 +23,7 @@ const SurplusExchangePage = () => {
 
     useEffect(() => {
         loadProducts();
-        console.log(products);
+        // console.log(products);
     }, [searchedItem]);
 
     function filterProducts() {

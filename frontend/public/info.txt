@@ -1,0 +1,21 @@
+    // {
+    //     "_id": 4,
+    //     "weight": 15,
+    //     "title": "Pineapples",
+    //     "seller": "Dondi Farm",
+    //     "images": "https://images.unsplash.com/photo-1550828520-4cb496926fc9?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1333"
+    // },
+    // {
+    //     "_id": 5,
+    //     "weight": 20,
+    //     "title": "Litchis",
+    //     "seller": "Prince Farm",
+    //     "images": "https://images.unsplash.com/photo-1521123036037-6725d75de336?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
+    // },
+    // {
+    //     "_id": 6,
+    //     "weight": 20,
+    //     "title": "Apples",
+    //     "seller": "Umcebo Fruit Farm",
+    //     "images": "https://images.unsplash.com/photo-1610397962076-02407a169a5b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1074"
+    // }

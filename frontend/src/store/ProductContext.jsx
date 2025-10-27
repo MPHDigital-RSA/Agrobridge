@@ -30,10 +30,11 @@ export function ProductProvider({ children }) {
     // function all products
     function loadProducts() {
         // console.log("loading FN")
-        axios.get('https://agrobridge-backend.vercel.app/api/products/')
+        // https://agrobridge-backend.vercel.app/api/products/
+        axios.get('/data.json')
             .then(res => {
-                console.log(res.data.data);
-                setProducts(res.data.data);
+                // console.log(res.data.data);
+                setProducts(res.data);
                 setAreProductsLoaded(true);
             }).catch(err => {
                 console.log(err);
@@ -43,15 +44,25 @@ export function ProductProvider({ children }) {
 
     // load single product
     function loadSingleProduct(id) {
-        axios.get(`https://fakestoreapi.com/products/${id}`)
-            .then(res => {
-                // console.log(res.data);
-                setProduct(res.data);
-                setIsProductLoaded(true);
-            }).catch(err => {
-                console.log(err);
-                setIsProductLoaded(false);
-            })
+
+        // first load all product
+        // loadProducts();
+        // call items and find one by id using filter
+        const singleProduct = products.filter(product => (product._id == id));
+        // this is the single product object
+        // return singleProduct[0];
+
+        setProduct(singleProduct[0]);
+
+        // axios.get(`https://fakestoreapi.com/products/${id}`)
+        //     .then(res => {
+        //         // console.log(res.data);
+        //         setProduct(res.data);
+        //         setIsProductLoaded(true);
+        //     }).catch(err => {
+        //         console.log(err);
+        //         setIsProductLoaded(false);
+        //     })
     }
 
     // delete single product

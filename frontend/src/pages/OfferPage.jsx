@@ -11,8 +11,9 @@ const OfferPage = () => {
 
     const navigate = useNavigate();
 
-    // is password visible or not
-    // const [isPwdVisible, setIsPwdVisible] = useState(false);
+    // single product state
+    // const [product, setProduct] = useState([]);
+    // const [isProductLoaded, setIsProductLoaded] = useState(false);
 
     // retrieve data from the store
     // const { logingIn } = useUserData();
@@ -51,11 +52,30 @@ const OfferPage = () => {
     // console.log(id);
 
     // fetch assets
-    const { loadSingleProduct, product, isProductLoaded } = useProducts();
+    const { loadSingleProduct, product } = useProducts();
+
+    // async
+    async function loadLocalData() {
+        const data = await loadSingleProduct(id)
+        console.log(data)
+    }
 
     // make a request for single item with the ID
     useEffect(() => {
-        loadSingleProduct(id);
+
+        // loadLocalData();
+        // loadSingleProduct(id).then(data => {
+        //     setProduct(data);
+        //     setIsProductLoaded(true);
+        //     console.log(data)
+        // }).catch(err => {
+        //     console.log(err);
+        //     setIsProductLoaded(false);
+        // })
+
+        // const newProduct = loadSingleProduct(id);
+        // console.log(newProduct)
+        // setProduct(newProduct);
     }, [])
 
     return (
@@ -74,7 +94,9 @@ const OfferPage = () => {
             <div className="customer-profile">
                 <div className="customer-image">
                     <BsCardImage />
-
+                    {
+                        // isProductLoaded ? <p>{product}</p> : <p>Loading..</p>
+                    }
                 </div>
             </div>
 

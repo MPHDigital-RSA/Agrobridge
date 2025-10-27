@@ -46,7 +46,7 @@ export function ProductProvider({ children }) {
     async function loadSingleProduct(id) {
 
         // first load all product
-        loadProducts();
+        // loadProducts();
         // call items and find one by id using filter
         const singleProduct = products.filter(product => (product._id == id));
         // this is the single product object

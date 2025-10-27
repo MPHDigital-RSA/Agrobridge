@@ -1,0 +1,41 @@
+[
+    {
+        "_id": 1,
+        "weight": 20,
+        "title": "Tomatoes",
+        "seller": {
+            "name": "Super Farm",
+            "email": "admin@superfarm.com",
+            "cell": "031 345 3345",
+            "location" : "Pretoria Rural",
+            "sellerImage": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870"
+        },
+        "images": "https://images.unsplash.com/photo-1467020323552-36f7bf0e30e6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
+    },
+    {
+        "_id": 2,
+        "weight": 10,
+        "title": "Oranges",
+        "seller": {
+            "name": "Citru-palace Farm",
+            "email": "admin@citrupalacefarm.com",
+            "cell": "031 476 6799",
+            "location" : "Mandeni Rural",
+            "sellerImage": "https://images.unsplash.com/photo-1745258330776-b8c8802fddf8?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=387"
+        },
+        "images": "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=735"
+    },
+    {
+        "_id": 3,
+        "weight": 4,
+        "title": "Spinach",
+        "seller": {
+            "name": "Veggi Farms",
+            "email": "admin@veggiefarms.com",
+            "cell": "031 508 0087",
+            "location" : "chartsworth Central",
+            "sellerImage": "https://plus.unsplash.com/premium_photo-1689551670902-19b441a6afde?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=387"
+        },
+        "images": "https://images.unsplash.com/photo-1574316071802-0d684efa7bf5?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=735"
+    }
+]

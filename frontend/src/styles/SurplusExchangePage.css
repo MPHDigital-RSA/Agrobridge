@@ -35,6 +35,12 @@
     font-size: 12px;
     text-decoration: none;
     transition: 250ms ease-in-out;
+    border: none;
+    /* margin-inline: auto; */
+}
+
+.buttons-container {
+    text-align: center;
 }
 
 .nav-button:hover {

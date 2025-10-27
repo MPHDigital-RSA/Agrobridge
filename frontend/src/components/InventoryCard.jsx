@@ -21,7 +21,7 @@ const InventoryCard = ({ item }) => {
                 </div>
 
                 <p className="posted-by">
-                    by <span>{item.user}</span>
+                    by <span>{item.seller.name}</span>
                 </p>
 
                 <Link className='button' to={isUserLogged() ? `/offer/${item._id}` : `/`}>

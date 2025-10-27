@@ -12,8 +12,8 @@ const OfferPage = () => {
     const navigate = useNavigate();
 
     // single product state
-    // const [product, setProduct] = useState([]);
-    // const [isProductLoaded, setIsProductLoaded] = useState(false);
+    const [product, setProduct] = useState([]);
+    const [isProductLoaded, setIsProductLoaded] = useState(false);
 
     // retrieve data from the store
     // const { logingIn } = useUserData();
@@ -28,21 +28,11 @@ const OfferPage = () => {
 
         // validation
 
-        if (formData.get('email') == "" && formData.get('password') == "") {
-            alert("Enter email and password")
+        if (formData.get('product') == "" && formData.get('weight') == "" && formData.get('description')) {
+            alert("Enter Product name, Weight and Description")
             return
-        } else if (formData.get('email') == "" && formData.get('password')) {
-            alert("Enter email")
-            return
-        } else if (formData.get('email') && formData.get('password') == "") {
-            alert("Enter password")
-            return
-        }
-        else {
-            // do a post request here
-            // call create products and pass in form values
-            // logingIn(formValues);
-            // navigate
+        } else {
+            alert("Offer Sent Successfully")
             navigate("/");
         }
 
@@ -52,7 +42,7 @@ const OfferPage = () => {
     // console.log(id);
 
     // fetch assets
-    const { loadSingleProduct, product } = useProducts();
+    const { loadSingleProduct, products } = useProducts();
 
     // async
     async function loadLocalData() {
@@ -62,21 +52,20 @@ const OfferPage = () => {
 
     // make a request for single item with the ID
     useEffect(() => {
-
         // loadLocalData();
-        // loadSingleProduct(id).then(data => {
-        //     setProduct(data);
-        //     setIsProductLoaded(true);
-        //     console.log(data)
-        // }).catch(err => {
-        //     console.log(err);
-        //     setIsProductLoaded(false);
-        // })
+        loadSingleProduct(id).then(data => {
+            console.log(data);
+            setProduct(data);
+            setIsProductLoaded(true);
+        }).catch(err => {
+            console.log(err);
+            setIsProductLoaded(false);
+        })
 
         // const newProduct = loadSingleProduct(id);
         // console.log(newProduct)
         // setProduct(newProduct);
-    }, [])
+    }, [isProductLoaded])
 
     return (
         <section className='offer-page'>
@@ -93,10 +82,17 @@ const OfferPage = () => {
 
             <div className="customer-profile">
                 <div className="customer-image">
-                    <BsCardImage />
                     {
-                        // isProductLoaded ? <p>{product}</p> : <p>Loading..</p>
+                        isProductLoaded ? <img src={product.seller.sellerImage} alt="" className='seller-image' /> : <BsCardImage />
                     }
+                </div>
+                <div className="personal-info">
+                    <p className="name">CEO @ {isProductLoaded ? product.seller.name : null}</p>
+                    <p className="location">{isProductLoaded ? product.seller.location : null}</p>
+                </div>
+
+                <div className="contact-info">
+
                 </div>
             </div>
 
@@ -110,19 +106,19 @@ const OfferPage = () => {
                         </div>
 
                         <div className="form-group">
-                            <input type="number" placeholder='Weight (Kg)' name='weight' />
+                            <input type="number" placeholder='Quantity (Kg)' name='weight' />
                         </div>
 
                         <div className="form-group">
 
-                            <textarea name="description" placeholder='Describe your product'></textarea>
+                            <textarea name="description" placeholder='When harvested and condition of the product'></textarea>
                         </div>
 
-                        <button type='submit'>Send Offer to -  {'Prince@gmail.com'}</button>
+                        <button type='submit'>Send Offer to -  {isProductLoaded ? product.seller.email : null}</button>
                     </form>
                 </div>
                 <div className="image-col">
-                    {/* <img src={product.image} alt='' /> */}
+                    <img src={isProductLoaded ? product.images : null} alt='' />
                 </div>
             </div>
         </section>

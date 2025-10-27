@@ -11,6 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 // function to check if user is logged
 import { isUserLogged } from "../utilities/sessionStorage";
 import { useUserData } from "../store/UserContext";
+import Footer from "../components/Footer";
 
 const SurplusExchangePage = () => {
 
@@ -43,8 +44,8 @@ const SurplusExchangePage = () => {
 
                     {
                         isUserLogged() ?
-                            <div>
-                                <p style={{ color: "red", textAlign: "center" }}>profile</p>
+                            <div className="buttons-container">
+                                <button onClick={() => { logingOut(), navigate("/") }} className="nav-button">LogOut</button>
                             </div> : <div className="login-signup">
                                 <Link to="/login" className="nav-button">Log In</Link>
                                 <Link to="/signup" className="nav-button">Sign Up</Link>
@@ -56,8 +57,6 @@ const SurplusExchangePage = () => {
                         <h1>Food Surplus Exchange</h1>
                         <p>Exchange your surplus fruits and veggies for a different agricultural stock of the same value</p>
                         <BigTextButton buttonText="Post Your Product" buttonUrl="/post" />
-
-                        <button onClick={() => { logingOut(), navigate("/") }}>LogOut</button>
                     </div>
                 </div>
             </section>
@@ -87,6 +86,8 @@ const SurplusExchangePage = () => {
                 }
 
             </section>
+
+            <Footer />
         </>
     )
 }

@@ -33,7 +33,7 @@ export function ProductProvider({ children }) {
         // https://agrobridge-backend.vercel.app/api/products/
         axios.get('/data.json')
             .then(res => {
-                // console.log(res.data.data);
+                // console.log(res.data);
                 setProducts(res.data);
                 setAreProductsLoaded(true);
             }).catch(err => {
@@ -43,14 +43,14 @@ export function ProductProvider({ children }) {
     }
 
     // load single product
-    function loadSingleProduct(id) {
+    async function loadSingleProduct(id) {
 
         // first load all product
-        // loadProducts();
+        loadProducts();
         // call items and find one by id using filter
         const singleProduct = products.filter(product => (product._id == id));
         // this is the single product object
-        // return singleProduct[0];
+        return singleProduct[0];
 
         setProduct(singleProduct[0]);
 

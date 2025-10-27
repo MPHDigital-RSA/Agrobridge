@@ -14,6 +14,26 @@
     background-color: var(--light-grey);
     width: 100%;
     padding: 20px;
+
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.customer-profile .personal-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+p.name {
+    color: var(--dark-green);
+    font-weight: 600;
+}
+
+p.location {
+    color: var(--dark-grey);
+    font-size: 14px;
 }
 
 .customer-image {
@@ -23,6 +43,7 @@
     background-color: var(--white);
     display: grid;
     place-content: center;
+    overflow: hidden;
 }
 
 .offer-page .form-container {
@@ -62,6 +83,15 @@
     position: relative;
     top: 0;
     left: 0;
+}
+
+.seller-image {
+    width: 50px;
+    height: 50px;
+    /* aspect-ratio: 1; */
+    object-fit: cover;
+    object-position: right;
+
 }
 
 @media screen and (width<980px) {
